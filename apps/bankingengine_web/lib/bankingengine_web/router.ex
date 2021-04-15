@@ -8,9 +8,6 @@ defmodule BankingengineWeb.Router do
   scope "/api", BankingengineWeb do
     pipe_through :api
 
-    get "/user", UsersController, :list
-    post "/users", UsersController, :create
-    get "/users/:id", UsersController, :show
-
+    post "/users", UserController, :create
   end
 end
