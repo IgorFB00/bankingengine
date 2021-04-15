@@ -1,4 +1,4 @@
-defmodule Bankingengine.Inputs.Create do
+defmodule Bankingengine.Users.Inputs.Create do
   @moduledoc """
   Input data for calling insert_new_user
   """

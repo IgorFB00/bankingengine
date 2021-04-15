@@ -1,10 +1,10 @@
-defmodule Bankingengine.Schemas.Account do
+defmodule Bankingengine.Accounts.Schemas.Account do
   @moduledoc """
   The entity of Account.
   """
   use Ecto.Schema
 
-  alias Bankingengine.Schemas.User
+  alias Bankingengine.Users.Schemas.User
 
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
