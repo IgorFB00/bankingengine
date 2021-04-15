@@ -1,4 +1,4 @@
-defmodule Bankingengine.Schemas.User do
+defmodule Bankingengine.Users.Schemas.User do
   @moduledoc """
   The entity of User.
   """

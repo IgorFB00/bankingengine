@@ -6,7 +6,7 @@ defmodule BankingengineWeb.UserController do
 
   alias Bankingengine.Users
   alias BankingengineWeb.InputValidation
-  alias Bankingengine.Inputs
+  alias Bankingengine.Users.Inputs
 
   def create(conn, params) do
     with {:ok, input} <- InputValidation.cast_and_apply(params, Inputs.Create),

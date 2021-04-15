@@ -2,8 +2,8 @@ defmodule Bankingengine.Users do
   @moduledoc """
   Domain public functions about the users context.
   """
-  alias Bankingengine.Inputs
-  alias Bankingengine.Schemas.User
+  alias Bankingengine.Users.Inputs
+  alias Bankingengine.Users.Schemas.User
   alias Bankingengine.Repo
 
   require Logger
