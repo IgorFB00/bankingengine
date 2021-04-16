@@ -8,6 +8,15 @@ defmodule Bankingengine.Users do
 
   require Logger
 
+  def fetch(user_id) do
+    Logger.debug("fetch user by id #{inspect(user_id)}")
+
+    case Repo.get(User, user_id) do
+      nil -> {:error, :not_found}
+      user -> {:ok, user}
+    end
+  end
+
   @doc """
   Given a valid changeset it attempts to insert a new user.
 
@@ -19,11 +28,9 @@ defmodule Bankingengine.Users do
     Logger.info("Inserting new user")
 
     params = %{name: input.name, email: input.email, cpf: input.cpf, adress: input.adress}
-    IO.puts("parametros:")
-    IO.inspect(params)
 
     with %{valid?: true} = changeset <- User.changeset(params),
-         {:ok, user} <- Repo.insert(IO.inspect(changeset)) do
+         {:ok, user} <- Repo.insert(changeset) do
       Logger.info("User successfully inserted.")
       {:ok, user}
     else

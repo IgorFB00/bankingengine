@@ -9,5 +9,7 @@ defmodule BankingengineWeb.Router do
     pipe_through :api
 
     post "/users", UserController, :create
+
+    post "/transfer", AccountController, :transfer
   end
 end

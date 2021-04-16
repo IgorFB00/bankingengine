@@ -8,6 +8,20 @@ defmodule BankingengineWeb.UserController do
   alias BankingengineWeb.InputValidation
   alias Bankingengine.Users.Inputs
 
+  def show(conn, %{"id" => user_id}) do
+    # validates if user_id is a uuid. TODO: better validation
+    with {:uuid, {:ok, _}} <- {:uuid, Ecto.UUID.cast(user_id)},
+         {:ok, user} <- Users.fetch(user_id) do
+      send_json(conn, 200, user)
+    end
+  else
+    {:uuid, :error} ->
+      send_json(conn, 404, %{type: "bad_input", description: "Not a UUID"})
+
+    {:error, :not_found} ->
+      send_json(conn, 404, %{type: "not_found", description: "User not found"})
+  end
+
   def create(conn, params) do
     with {:ok, input} <- InputValidation.cast_and_apply(params, Inputs.Create),
          {:ok, user} <- Users.insert_new_user(input) do

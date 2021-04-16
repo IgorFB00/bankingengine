@@ -12,7 +12,6 @@ defmodule BankingengineWeb.InputValidation do
         {:ok, Ecto.Changeset.apply_changes(changeset)}
 
       %{valid?: false} = changeset ->
-        IO.inspect(changeset)
         {:error, changeset}
     end
   end

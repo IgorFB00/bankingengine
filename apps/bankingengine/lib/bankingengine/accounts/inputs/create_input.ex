@@ -1,26 +1,22 @@
-defmodule Bankingengine.Accounts.Schemas.Account do
+defmodule Bankingengine.Accounts.Inputs.Create do
   @moduledoc """
-  The entity of Account.
+  Input data for calling insert_new_user
   """
   use Ecto.Schema
-  import Ecto.Changeset
 
   alias Bankingengine.Users.Schemas.User
+
+  import Ecto.Changeset
 
   @required [:user, :agency, :number, :balance]
   @optional []
 
-  @derive {Jason.Encoder, except: [:__meta__]}
-
-  @primary_key {:id, :binary_id, autogenerate: true}
-  @foreign_key_type :binary_id
-  schema "accounts" do
+  @primary_key false
+  embedded_schema do
     belongs_to :user, User
     field :agency, :string
     field :number, :string
     field :balance, :integer
-
-    timestamps()
   end
 
   def changeset(model \\ %__MODULE__{}, params) do
